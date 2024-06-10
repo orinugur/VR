@@ -21,7 +21,10 @@ public class LocomotionManager : MonoBehaviour
     [Header("Property")]
     [SerializeField] MoveStyleType _leftHandMoveStyle;
     [SerializeField] TurnStyleType _rightHandTurnStyle;
-
+    [SerializeField, Range(0.0f, 5.0f)] float _moveSpeed;
+    [SerializeField] bool _isEnableStrafe;
+    [SerializeField] bool _isUseGravity;
+    [SerializeField] bool _isEnableFly;
 
     public MoveStyleType MoveStyle
     {
@@ -60,5 +63,48 @@ public class LocomotionManager : MonoBehaviour
             }
         }
     }
+
+    public float MoveSpeed
+    {
+        get { return _moveSpeed; }
+        set
+        {
+            _moveSpeed = value;
+            Provider_ContinuousMove.moveSpeed = _moveSpeed;
+        }
+    }
+
+    public bool IsEnableStrafe
+    {
+        get { return _isEnableStrafe; }
+        set
+        {
+            _isEnableStrafe = value;
+            Provider_ContinuousMove.enableStrafe = _isEnableStrafe;
+        }
+    }
+
+    public bool IsUseGravity
+    {
+        get { return _isUseGravity; }
+        set
+        {
+            _isUseGravity = value;
+            Provider_ContinuousMove.useGravity = IsUseGravity;
+        }
+    }
+
+    public bool IsEnableFly
+    {
+        get { return _isEnableFly; }
+        set
+        {
+            _isEnableFly = value;
+            Provider_ContinuousMove.enableFly = _isEnableFly;
+        }
+    }
+
+
+
 
 }
