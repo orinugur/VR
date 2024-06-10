@@ -17,4 +17,27 @@ public class LocomotionManager : MonoBehaviour
     [SerializeField] ContinuousTurnProviderBase Provider_ContinuousTurn;
     [SerializeField] SnapTurnProviderBase Provider_SnapTurn;
     [SerializeField] TeleportationProvider Provider_Teleportation;
+
+    [Header("Property")]
+    [SerializeField] MoveStyleType _leftHandMoveStyle;
+
+    public MoveStyleType MoveStyle
+    {
+        get { return _leftHandMoveStyle; }
+        set
+        {
+            _leftHandMoveStyle = value;
+            switch (_leftHandMoveStyle)
+            {
+                case MoveStyleType.HeadRelative:
+                    Provider_ContinuousMove.forwardSource = XROrigin.Camera.transform;
+                    break;
+                case MoveStyleType.HandRelative:
+                    Provider_ContinuousMove.forwardSource = Controller_Left.transform;
+                    break;
+            }
+        }
+    }
+
+
 }
