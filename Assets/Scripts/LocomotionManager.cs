@@ -20,6 +20,8 @@ public class LocomotionManager : MonoBehaviour
 
     [Header("Property")]
     [SerializeField] MoveStyleType _leftHandMoveStyle;
+    [SerializeField] TurnStyleType _rightHandTurnStyle;
+
 
     public MoveStyleType MoveStyle
     {
@@ -39,5 +41,24 @@ public class LocomotionManager : MonoBehaviour
         }
     }
 
+    public TurnStyleType TurnStyle
+    {
+        get { return _rightHandTurnStyle; }
+        set
+        {
+            _rightHandTurnStyle = value;
+            switch (_rightHandTurnStyle)
+            {
+                case TurnStyleType.Snap:
+                    Provider_ContinuousTurn.enabled = false;
+                    Provider_SnapTurn.enabled = true;
+                    break;
+                case TurnStyleType.Continuous:
+                    Provider_ContinuousTurn.enabled = true;
+                    Provider_SnapTurn.enabled = false;
+                    break;
+            }
+        }
+    }
 
 }
