@@ -138,4 +138,21 @@ public class LocomotionManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        MoveStyle = _leftHandMoveStyle;
+        TurnStyle = _rightHandTurnStyle;
+        MoveSpeed = _moveSpeed;
+        IsEnableStrafe = _isEnableStrafe;
+        IsUseGravity = _isUseGravity;
+        IsEnableFly = _isEnableFly;
+        TurnSpeed = _turnSpeed;
+        EnableTurnAround = _isEnableTurnAround;
+        SnapTurnAmount = _snapTurnAmount;
+    }
 }
