@@ -25,6 +25,10 @@ public class LocomotionManager : MonoBehaviour
     [SerializeField] bool _isEnableStrafe;
     [SerializeField] bool _isUseGravity;
     [SerializeField] bool _isEnableFly;
+    [SerializeField, Range(0.0f, 180.0f)] float _turnSpeed;
+    [SerializeField] bool _isEnableTurnAround;
+    [SerializeField, Range(0.0f, 90.0f)] float _snapTurnAmount;
+    
 
     public MoveStyleType MoveStyle
     {
@@ -104,7 +108,34 @@ public class LocomotionManager : MonoBehaviour
         }
     }
 
+   public float TurnSpeed
+    {
+        get { return _turnSpeed; }
+        set
+        {
+            _turnSpeed = value;
+            Provider_ContinuousTurn.turnSpeed = _turnSpeed;
+        }
+    }
 
+    public bool EnableTurnAround
+    {
+        get { return _isEnableTurnAround; }
+        set
+        {
+            _isEnableTurnAround = value;
+            Provider_SnapTurn.enableTurnAround = _isEnableTurnAround;
+        }
+    }
 
+    public float SnapTurnAmount
+    {
+        get { return _snapTurnAmount; }
+        set
+        {
+            _snapTurnAmount = value;
+            Provider_SnapTurn.turnAmount = _snapTurnAmount;
+        }
+    }
 
 }
